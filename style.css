@@ -1,0 +1,94 @@
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      color: black;
+      background: linear-gradient(rgba(242, 242, 242, 0.5), rgba(242, 242, 242, 0.5)), 
+                  url('https://huggingface.co/spaces/Jhoncsilva/scout-basketball/resolve/main/images/1000449501.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    h1 {
+      margin: 10px 0;
+      font-size: 24px;
+    }
+    .teams {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .team {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #333;
+      border-radius: 8px;
+      background: white;
+      font-size: 12px;
+    }
+    table {
+      border-collapse: collapse;
+      margin: 0 auto;
+      font-size: 12px;
+    }
+    th, td {
+      border: 1px solid #555;
+      padding: 2px 5px;
+      text-align: center;
+    }
+    th {
+      background: #eee;
+    }
+
+    /* Alternância de cores nas colunas */
+td.col-q1, th.col-q1,
+td.col-q3, th.col-q3,
+td.col-total, th.col-total {
+  background: #fff; /* branco */
+}
+td.col-num, th.col-num,
+td.col-q2, th.col-q2,
+td.col-q4, th.col-q4 {
+  background: #e6e6e6; /* cinza mais escuro */
+}
+
+    button {
+      margin: 1px;
+      padding: 2px 5px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .totals {
+      font-weight: bold;
+      margin-top: 5px;
+      font-size: 12px;
+    }
+    .highlight {
+      margin-top: 6px;
+      padding: 5px;
+      background: gold;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 13px;
+      display: none;
+    }
+    .config {
+      margin: 5px auto;
+      padding: 10px;
+      background: white;
+      border: 1px solid #333;
+      border-radius: 8px;
+      width: 80%;
+      font-size: 12px;
+    }
+    input {
+      padding: 3px;
+      margin: 3px;
+      font-size: 12px;
+      width: 150px;
+    }
+    .controls {
+      margin-top: 5px;
+    }
