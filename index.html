@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Scout Basketball</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <h1>Scout Basketball</h1>
+
+  <!-- Configuração inicial -->
+  <div id="config" class="config">
+    <h2 style="font-size:16px;margin:5px 0;">Configurar Partida</h2>
+    <label>Time A: <input id="nameA" value="Time A"></label>
+    <label>Números: <input id="playersAInput" value="7,10,15"></label><br>
+
+    <label>Time B: <input id="nameB" value="Time B"></label>
+    <label>Números: <input id="playersBInput" value="4,9,22"></label><br>
+
+    <button onclick="startGame()">▶ Iniciar Jogo</button>
+  </div>
+
+  <!-- Área do placar -->
+  <div id="scoreboard" style="display:none;">
+    <div class="teams">
+      <div class="team">
+        <h2 id="teamAName">Time A</h2>
+        <div id="playersA"></div>
+        <div class="totals" id="totalsA"></div>
+        <div class="highlight" id="highlightA"></div>
+      </div>
+
+      <div class="team">
+        <h2 id="teamBName">Time B</h2>
+        <div id="playersB"></div>
+        <div class="totals" id="totalsB"></div>
+        <div class="highlight" id="highlightB"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button onclick="nextQuarter()">⏭ Próximo Quarto</button>
+      <button onclick="resetGame()">🔄 Novo Jogo</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
