@@ -8,8 +8,8 @@
       const playersAInput = document.getElementById("playersAInput").value.split(",");
       const playersBInput = document.getElementById("playersBInput").value.split(",");
 
-      teamA = playersAInput.map(num => ({ numero: num.trim(), pontos: [0,0,0,0] }));
-      teamB = playersBInput.map(num => ({ numero: num.trim(), pontos: [0,0,0,0] }));
+      teamA = playersAInput.map(num => ({ numero: num.trim(), pontos: [0,0,0,0,0] }));
+      teamB = playersBInput.map(num => ({ numero: num.trim(), pontos: [0,0,0,0,0] }));
 
       document.getElementById("teamAName").innerText = nameA;
       document.getElementById("teamBName").innerText = nameB;
@@ -28,13 +28,13 @@
       let header = `
         <tr>
           <th class="col-num">Nº</th>
-          <th class="col-q1">Q1</th><th class="col-q2">Q2</th><th class="col-q3">Q3</th><th class="col-q4">Q4</th>
+          <th class="col-q1">Q1</th><th class="col-q2">Q2</th><th class="col-q3">Q3</th><th class="col-q4">Q4</th><th class="col-ex">EX</th>
           <th class="col-total">Total</th>
           <th>Ações</th>
         </tr>`;
       table.innerHTML = header;
 
-      let teamTotals = [0,0,0,0];
+      let teamTotals = [0,0,0,0,0];
       let teamTotalGeral = 0;
 
       players.forEach((p, i) => {
@@ -49,6 +49,7 @@
           <td class="col-q2">${p.pontos[1]}</td>
           <td class="col-q3">${p.pontos[2]}</td>
           <td class="col-q4">${p.pontos[3]}</td>
+          <td class="col-ex">${p.pontos[4]}</td>
           <td class="col-total"><b>${totalJogador}</b></td>
           <td>
             <button onclick="addPoints('${containerId}', ${i},1)">+1</button>
@@ -65,7 +66,7 @@
       container.appendChild(table);
 
       document.getElementById(totalsId).innerHTML =
-        `Q1: ${teamTotals[0]} | Q2: ${teamTotals[1]} | Q3: ${teamTotals[2]} | Q4: ${teamTotals[3]} <br>
+        `Q1: ${teamTotals[0]} | Q2: ${teamTotals[1]} | Q3: ${teamTotals[2]} | Q4: ${teamTotals[3]} | EX: ${teamTotals[4]} <br>
          <big>Total: ${teamTotalGeral}</big>`;
     }
 
@@ -86,6 +87,18 @@
         currentQuarter++;
         alert("Início do " + (currentQuarter+1) + "º quarto!");
         render();
+      } else if (currentQuarter == 3) {
+        // Calculate totals after Q4
+        let totalA = teamA.reduce((sum, p) => sum + p.pontos.slice(0, 4).reduce((a, b) => a + b, 0), 0);
+        let totalB = teamB.reduce((sum, p) => sum + p.pontos.slice(0, 4).reduce((a, b) => a + b, 0), 0);
+        if (totalA == totalB) {
+          currentQuarter = 4;
+          alert("Placar empatado! Início do EX!");
+          render();
+        } else {
+          alert("Fim da partida!");
+          showHighlights();
+        }
       } else {
         alert("Fim da partida!");
         showHighlights();
